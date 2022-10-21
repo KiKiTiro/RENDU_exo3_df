@@ -1,0 +1,29 @@
+---
+version: '3'
+    
+services:
+  mariadb:
+    image: mariadb
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      # MARIADB_ROOT_PASSWORD: juve
+      MYSQL_ROOT_PASSWORD: "juve"
+
+      # MYSQL_DATABASE: "exo3"
+
+      MYSQL_USER: "delpiero"
+
+      MYSQL_PASSWORD: "juve"
+
+  flask-app:
+    build: .
+    links:
+    - mariadb
+    ports:
+    - "5000:5000"
+  
+    
+volumes:
+  db_data: {}

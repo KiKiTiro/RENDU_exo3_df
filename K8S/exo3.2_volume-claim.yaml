@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pvc
+  namespace: exo3
+  labels:
+    app: mariadb
+spec:
+  storageClassName: manual
+  accessModes:
+  - ReadWriteOnce 
+  resources:
+    requests: 
+      storage: 2Gi 
+ 
